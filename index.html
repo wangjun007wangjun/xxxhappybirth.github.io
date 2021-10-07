@@ -233,7 +233,9 @@
     <div class="land"></div>
 
   </div>
-
+  <audio id="firemp3">  
+    <source src="烟花.mp3" type="audio/mp3"></source>  
+  </audio>
   <script>
     // 烟花效果
     var canvas = document.getElementById('my-canvas');
@@ -250,7 +252,13 @@
 
     window.addEventListener('resize', resizeCanvas, false);
     resizeCanvas();
-
+    function playFireAudio()
+    {
+      var fireaudio = document.getElementById("firemp3");
+      fireaudio.currentTime=0;
+      fireaudio.volume = 0.7;
+      fireaudio.play();
+    }
     function mouseDownHandler(e) {
       var x = e.clientX;
       var y = e.clientY;
@@ -258,6 +266,7 @@
     }
     var rid;
     function fire(x, y) {
+      playFireAudio();
       createFireworks(x, y);
       function tick() {
         context.globalCompositeOperation = 'destination-out';
